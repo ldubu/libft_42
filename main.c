@@ -6,7 +6,7 @@
 /*   By: ldubuche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:37:02 by ldubuche          #+#    #+#             */
-/*   Updated: 2021/11/23 13:45:51 by ldubuche         ###   ########.fr       */
+/*   Updated: 2021/11/23 16:01:29 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -38,9 +38,17 @@ int	main(void)
 	printf("Test 17\nOfficiel = %d, yours = %d\n", isprint(5), ft_isprint(5));
 	printf("Test 18\nOfficiel = %d, yours = %d\n", isprint(277), ft_isprint(277));*/
 
-	printf("strlen\n");
+	/*printf("strlen\n");
 	printf("'Bonjour' %lu : %lu\n", strlen("bonjour"),ft_strlen("bonjour"));
 	printf("''attendu %lu: %lu\n", strlen(""), ft_strlen(""));
 	printf("'J'aime les chats'attendu %lu: %lu\n", strlen("J'aime les chats"), ft_strlen("J'aime les chats"));
-	printf("'a'attendu %lu: %lu\n", strlen("a"), ft_strlen("a"));
+	printf("'a'attendu %lu: %lu\n", strlen("a"), ft_strlen("a"));*/
+
+	char cpytest[] = "abcdefghijkl";
+	char movtest[] = "abcdefghijkl";
+
+	printf("cpy %s\n", memcpy(cpytest+2, cpytest, 8));
+	printf("move %s\n", memmove(movtest+2, movtest, 8));
+
+
 }
