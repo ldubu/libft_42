@@ -11,7 +11,12 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-void	ft_putchar(char c)
+size_t	ft_strlen(const char *s)
 {
-	write(1, &c, 1);
+	size_t	lenght;
+
+	lenght = 0;
+	while (s[lenght])
+		lenght++;
+	return (lenght);
 }

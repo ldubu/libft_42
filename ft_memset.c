@@ -6,12 +6,17 @@
 /*   By: ldubuche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:37:02 by ldubuche          #+#    #+#             */
-/*   Updated: 2021/11/23 10:37:21 by ldubuche         ###   ########.fr       */
+/*   Updated: 2021/11/23 11:13:21 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	ft_putchar(char c)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	write(1, &c, 1);
+	int	i;
+
+	i = 0;
+	while (i < len)
+		b[i++] = unsigned char (c);
+	return (b);
 }

@@ -6,12 +6,16 @@
 /*   By: ldubuche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:37:02 by ldubuche          #+#    #+#             */
-/*   Updated: 2021/11/23 10:37:21 by ldubuche         ###   ########.fr       */
+/*   Updated: 2021/11/23 12:20:14 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	ft_putchar(char c)
+void	ft_bzero(void *s, size_t n)
 {
-	write(1, &c, 1);
+	int	i;
+
+	i = 0;
+	while (i < n)
+		s[i++] = '0';
 }
