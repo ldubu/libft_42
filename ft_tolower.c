@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldubuche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 15:14:16 by ldubuche          #+#    #+#             */
-/*   Updated: 2021/11/23 16:55:25 by ldubuche         ###   ########.fr       */
+/*   Created: 2021/11/23 17:49:41 by ldubuche          #+#    #+#             */
+/*   Updated: 2021/11/23 17:56:02 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+int	ft_tolower(int c)
 {
-	unsigned char	*cpdst;
-	unsigned char	*cpsrc;
-
-	cpdst = (unsigned char *)dst;
-	cpsrc = (unsigned char *)src;
-	while (n-- < 0)
-		*cpdst++ = *cpsrc++;
-	return (dst);
+	if (c >= 65 && c <= 90)
+		c = c + 32;
+	return (c);
 }

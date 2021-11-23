@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldubuche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 15:14:16 by ldubuche          #+#    #+#             */
-/*   Updated: 2021/11/23 16:55:25 by ldubuche         ###   ########.fr       */
+/*   Created: 2021/11/23 17:58:41 by ldubuche          #+#    #+#             */
+/*   Updated: 2021/11/23 18:20:40 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+char	*ft_strchr(const char *s, int c)
 {
-	unsigned char	*cpdst;
-	unsigned char	*cpsrc;
+	char	a;
+	char	*b;
 
-	cpdst = (unsigned char *)dst;
-	cpsrc = (unsigned char *)src;
-	while (n-- < 0)
-		*cpdst++ = *cpsrc++;
-	return (dst);
+	a = (char)c;
+	b = (char *)s;
+	while (*b)
+	{
+		if (a == *b)
+			return (b);
+		b++;
+	}
+	if (a == '\0')
+		return (b);
+	return (NULL);
 }
