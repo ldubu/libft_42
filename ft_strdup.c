@@ -6,13 +6,25 @@
 /*   By: ldubuche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:37:02 by ldubuche          #+#    #+#             */
-/*   Updated: 2021/11/23 12:20:14 by ldubuche         ###   ########.fr       */
+/*   Updated: 2021/11/23 10:37:21 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*strdup(const char *s1)
 {
-	while (n-- > 0)
-		*s++ = 0;
+	int		len;
+	int		i;
+	char	*cpy;
+
+	len = strlen(s1);
+	cpy = NULL;
+	cpy = (char *) malloc(sizeof(char) * len);
+	if (cpy == NULL)
+		return (NULL);
+	i = 0;
+	while (len-- > 0)
+		cpy[i++] = *s1++;
+	return (cpy);
 }

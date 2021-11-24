@@ -6,13 +6,29 @@
 /*   By: ldubuche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:37:02 by ldubuche          #+#    #+#             */
-/*   Updated: 2021/11/23 12:20:14 by ldubuche         ###   ########.fr       */
+/*   Updated: 2021/11/23 10:37:21 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	while (n-- > 0)
-		*s++ = 0;
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < (int) len)
+	{
+		j = 0;
+		if (haystack[i] == needle[0])
+		{
+			while (needle[j] && needle[j] == haystack[i + j])
+				j++;
+			if (needle[j] == '\0')
+				return ((char *) haystack + i);
+		}
+		i++;
+	}
+	return ((char *) haystack);
 }
