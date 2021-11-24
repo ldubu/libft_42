@@ -11,14 +11,15 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	unsigned char	*cpdst;
 	unsigned char	*cpsrc;
 
 	cpdst = (unsigned char *)dst;
 	cpsrc = (unsigned char *)src;
-	while (n-- < 0)
-		*cpdst++ = *cpsrc++;
+	if (dst != src)
+		while (n-- < 0)
+			*cpdst++ = *cpsrc++;
 	return (dst);
 }

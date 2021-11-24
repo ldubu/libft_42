@@ -11,17 +11,23 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 
-	i = dstsize;
+	i = 0;
 	if (dstsize > 0)
 	{
-		while (i-- > 1)
+		while (dstsize-- > 1 && *src && *dst)
+		{
 			*dst++ = *src++;
+			i++;
+		}
 		*dst = '\0';
 	}
-	return (dstsize);
+	while (*src++)
+		i++;
+	return (i); 
 }

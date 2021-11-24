@@ -1,54 +1,42 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ldubuche <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 10:37:02 by ldubuche          #+#    #+#             */
-/*   Updated: 2021/11/23 16:01:29 by ldubuche         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 #include "libft.h"
-#include <stdio.h>
-#include <ctype.h>
-int	main(void)
+
+int main(void)
 {
-	/*printf("Test 1\nOfficiel = %d, yours = %d\n", isalpha('a'), ft_isalpha('a'));
-	printf("Test 2\nOfficiel = %d, yours = %d\n", isalpha('l'), ft_isalpha('l'));
-	printf("Test 3\nOfficiel = %d, yours = %d\n", isalpha('z'), ft_isalpha('z'));
-	printf("Test 4\nOfficiel = %d, yours = %d\n", isalpha('A'), ft_isalpha('A'));
-	printf("Test 5\nOfficiel = %d, yours = %d\n", isalpha('Z'), ft_isalpha('Z'));
-	printf("Test 6\nOfficiel = %d, yours = %d\n", isalpha('J'), ft_isalpha('J'));
-	printf("Test 7\nOfficiel = %d, yours = %d\n", isalpha('5'), ft_isalpha('5'));
+	char s1[] = "J'aime les chats, c'est choupi";
+	char s1b[]= "J'aime les chiens, c'est choupi";
+	char s2[] = "miaou";
+	char s2b[]= "mia0u";
+	char s3[] = "";
+	char dst1[]= "................................";
+	char dst1b[]= "................................";
+	char dst2[]= "................................";
+	char dst2b[]= "................................";
+	char dst3[]= "................................";
+	char dst3b[]= "................................";
+	char s4[] = "bonoubancbananebanana";
+	char s5[] = "banana";
 
-	printf("Test 7\nOfficiel = %d, yours = %d\n", isdigit('5'), ft_isdigit('5'));
-	printf("Test 8\nOfficiel = %d, yours = %d\n", isdigit('9'), ft_isdigit('9'));
-	printf("Test 9\nOfficiel = %d, yours = %d\n", isdigit('l'), ft_isdigit('l'));
+	printf("Test strlen\nOn veut %lu: %lu\n%lu:%lu\n%lu:%lu\n", strlen(s1), ft_strlen(s1), strlen(s2), ft_strlen(s2), strlen(s3), ft_strlen(s3));
+	printf("end of strlen");
 	
-	printf("Test 10\nOfficiel = %d, yours = %d\n", isalnum('l'), ft_isalnum('l'));
-	printf("Test 11\nOfficiel = %d, yours = %d\n", isalnum('3'), ft_isalnum('3'));
-	printf("Test 12\nOfficiel = %d, yours = %d\n", isalnum('@'), ft_isalnum('@'));
-	
-	printf("Test 13\nOfficiel = %d, yours = %d\n", isascii('@'), ft_isascii('@'));
-	printf("Test 14\nOfficiel = %d, yours = %d\n", isascii(278), ft_isascii(278));
-	printf("Test 15\nOfficiel = %d, yours = %d\n", isascii(48), ft_isascii(48));
+	printf("\nTest strlcopy retour offi %lu: %lu, dst offi %s : %s\n", strlcpy(dst1, s1, 20), ft_strlcpy(dst1b, s1, 20), dst1, dst1b);
+	printf("retour offi %lu: %lu, dst offi %s : %s\n", strlcpy(dst2, s2, 25), ft_strlcpy(dst2b, s2, 25), dst2, dst2b);
+	printf("retour offi %lu: %lu, dst offi %s : %s\n", strlcpy(dst3, s3, 25), ft_strlcpy(dst3b, s3, 25), dst3, dst3b);
 
-	printf("Test 16\nOfficiel = %d, yours = %d\n", isprint(48), ft_isprint(48));
-	printf("Test 17\nOfficiel = %d, yours = %d\n", isprint(5), ft_isprint(5));
-	printf("Test 18\nOfficiel = %d, yours = %d\n", isprint(277), ft_isprint(277));*/
+	printf("dst1 %lu, dst1b %lu", strlen(dst3), strlen(dst3b));
+	printf("\nTest strlcat retour offi %lu: %lu, dst offi %s: %s\n", strlcat(dst1, s2, 25), ft_strlcat(dst1b, s2, 25), dst1, dst1b);
+	printf("retour offi %lu: %lu, dst offi %s: %s\n", strlcat(dst2, s1, 7), ft_strlcat(dst2b, s1, 7), dst2, dst2b);
+	printf("dst1 %lu, dst1b %lu", strlen(dst1), strlen(dst1b));
+	printf("retour offi %lu: %lu, dst offi %s: %s\n", strlcat(dst1, s1, 10), ft_strlcat(dst1b, s1, 10), dst1, dst1b);
 
-	/*printf("strlen\n");
-	printf("'Bonjour' %lu : %lu\n", strlen("bonjour"),ft_strlen("bonjour"));
-	printf("''attendu %lu: %lu\n", strlen(""), ft_strlen(""));
-	printf("'J'aime les chats'attendu %lu: %lu\n", strlen("J'aime les chats"), ft_strlen("J'aime les chats"));
-	printf("'a'attendu %lu: %lu\n", strlen("a"), ft_strlen("a"));*/
+	/*printf("\nTest strchr retour offi %s : %s\n", strchr(s1, 'e'), ft_strchr(s1, 'e'));
+	printf("retour offi %s : %s\n", strchr(s1, 'n'), ft_strchr(s1, 'n'));
 
-	char cpytest[] = "abcdefghijkl";
-	char movtest[] = "abcdefghijkl";
+	printf("\nTest strrchr retour offi %s : %s\n", strrchr(s1, 'e'), ft_strrchr(s1, 'e'));
+	printf("retour offi %s : %s\n", strrchr(s1, 'n'), ft_strrchr(s1, 'n'));
 
-	printf("cpy %s\n", memcpy(cpytest+2, cpytest, 8));
-	printf("move %s\n", memmove(movtest+2, movtest, 8));
+	printf("\nTest strncmp retour offi %d: %d\n", strncmp(s2, s2b,5), ft_strncmp(s2, s2b,5));
+	printf("retour offi %d: %d\n", strncmp(s1, s1b,20), ft_strncmp(s1, s1b,20));
 
-
+	printf("\nTest strnstr retour offi %s: %s", strnstr(s4, s5, 30), ft_strnstr(s4, s5, 30));*/
 }
