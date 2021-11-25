@@ -18,8 +18,11 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 	cpdst = (unsigned char *)dst;
 	cpsrc = (unsigned char *)src;
-	if (dst != src)
-		while (n-- < 0)
-			*cpdst++ = *cpsrc++;
+	while (n-- > 0)
+	{
+		//printf("\n in the while");
+		*cpdst++ = *cpsrc++;
+	}
+
 	return (dst);
 }

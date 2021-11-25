@@ -8,14 +8,14 @@ SRC = ft_bzero.c, ft_isalnum.c, ft_isalpha.c, ft_isascii.c, ft_digit.c\
 	ft_atoi.c, ft_calloc.c, ft_strdup.c
 OBJ = $(SRC:.c=.o)
 
-all: $(NAME)
-
 $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
 %.o: %.c
 	$(CC) -I. -o $@ -c $? $(CFLAGS)
+
+all: $(NAME)
 
 clean:
 	rm -rf $(OBJ)
