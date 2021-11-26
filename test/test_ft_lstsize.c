@@ -10,14 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-t_list	*ft_lstnew(void *content)
+int main(void)
 {
-	t_list	*new_ele;
+	t_list	*elem1;
+	t_list	*elem2;
+	t_list	*elem3;
+	t_list	**prems;
+	int		size;
 
-	new_ele = (t_list *) malloc(sizeof(t_list));
-	new_ele->content = content;
-	new_ele->next = NULL;
-	return (new_ele);
+	elem1 = NULL;
+	elem2 = NULL;
+	elem3 = NULL;
+
+	elem1 = (t_list*) malloc(sizeof(t_list));
+	elem2 = (t_list*) malloc(sizeof(t_list));
+	elem3 = (t_list*) malloc(sizeof(t_list));
+
+	if (elem1 == NULL || elem2 == NULL|| elem3 == NULL)
+	{
+		printf("error");
+		exit(0);
+	}
+	prems = &elem1;
+	elem1->content = (void *) 5;
+	elem2->content = (void *) 6;
+	elem3->content = (void *) 7;
+	
+	elem1->next = elem2;
+	elem2->next = elem3;
+	elem3->next = NULL;
+	
+	size = ft_lstsize(*prems);
+
+	while ((*prems)->next != NULL)
+	{
+		printf("\n %d", (int) (*prems)->content);
+		*prems = (*prems)->next;
+	}
+	printf("\n %d", (int) (*prems)->content);
+	printf("\n size = %d", size);
+	return(0);
 }

@@ -41,21 +41,36 @@ SRC =		ft_bzero.c\
 			ft_putendl_fd.c\
 			ft_putnbr_fd.c\
 
+SRCB =		ft_lstadd_back.c\
+			ft_lstadd_front.c\
+			ft_lstclear.c\
+			ft_lstdelone.c\
+			ft_lstiter.c\
+			ft_lstlast.c\
+			ft_lstmap.c\
+			ft_lstnew.c\
+			ft_lstsize.c\
+
 OBJ =		$(SRC:.c=.o)
 
+OBJB =		$(SRCB:.c=.o)
+
 .c.o:
-			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+			@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 			
 $(NAME): 	$(OBJ)
-			ar rc $(NAME) $(OBJ)
+			@ar rc $(NAME) $(OBJ)
+
+bonus:		$(OBJ) $(OBJB)
+			@ar rc $(NAME) $(OBJ) $(OBJB)
 
 all: 		$(NAME)
 
 clean:
-			$(RM) $(OBJ)
+			@$(RM) $(OBJ) $(OBJB)
 
 fclean:		clean
-			$(RM) $(NAME)
+			@$(RM) $(NAME)
 
 re: 		fclean all
 

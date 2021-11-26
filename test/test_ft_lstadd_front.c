@@ -12,23 +12,52 @@
 
 #include "../libft.h"
 
+void del(void *elem)
+{
+	elem = 0;
+}
+
 int main(void)
 {
-	t_list *elem1;
-	t_list *elem2;
-	t_list *elem3;
+	t_list	*elem1;
+	t_list	*elem2;
+	t_list	*elem3;
+	t_list	*new_elem;
+	t_list	**prems;
 
 	elem1 = NULL;
 	elem2 = NULL;
 	elem3 = NULL;
+	new_elem = NULL;
 
-	elem1 = ft_lstnew((void *) 0);
+	elem1 = (t_list*) malloc(sizeof(t_list));
+	elem2 = (t_list*) malloc(sizeof(t_list));
+	elem3 = (t_list*) malloc(sizeof(t_list));
+	new_elem = (t_list*) malloc(sizeof(t_list));
+
+	if (elem1 == NULL || elem2 == NULL|| elem3 == NULL || new_elem == NULL)
+	{
+		printf("error");
+		exit(0);
+	}
+	prems = &elem1;
+	elem1->content = (void *) 5;
+	elem2->content = (void *) 6;
+	elem3->content = (void *) 7;
+	new_elem->content = (void *) 8;
+
 	elem1->next = elem2;
-	elem2 = ft_lstnew((void *)'d');
 	elem2->next = elem3;
-	elem3 = ft_lstnew((void *)-5);
-	printf("elem1 : %d", (int) elem1->content);
-	printf("\nelem2 : %c", (char) elem2->content);
-	printf("\nelem3 : %d", (int) elem3->content);
-	return (0);
+	elem3->next = NULL;
+	new_elem->next = NULL;
+
+	ft_lstadd_front(prems, new_elem);
+
+	while ((*prems)->next != NULL)
+	{
+		printf("\n %d", (int) (*prems)->content);
+		*prems = (*prems)->next;
+	}
+	printf("\n %d", (int) (*prems)->content);
+	return(0);
 }
