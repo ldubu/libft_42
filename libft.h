@@ -18,6 +18,12 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+typedef struct	s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
+
 void	ft_putchar(char c);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_bzero(void *s, size_t n);
