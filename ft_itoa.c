@@ -12,15 +12,15 @@
 
 #include "libft.h"
 
-static int	ft_charnum(unsigned int n, int *i)
+static long long	ft_charnum(unsigned int n, int *i)
 {
-	int	d;
+	long long	d;
 
 	d = 1;
 	while (n / d > 9)
 	{
-		i++;
-		d /= 10;
+		*i = *i + 1;
+		d *= 10;
 	}
 	return (d);
 }
@@ -28,16 +28,17 @@ static int	ft_charnum(unsigned int n, int *i)
 char	*ft_itoa(int n)
 {
 	int				i;
-	int				d;
+	long long		d;
 	int				sign;
 	char			*s;
 	unsigned int	num;
 
 	i = 0;
 	sign = 0;
-	if (n < 0)
-		sign = 1;
-	num = -n;
+	if (n < 0 && sign++ >= 0)
+		num = -n;
+	else
+		num = n;
 	d = ft_charnum(num, &i);
 	s = (char *) malloc(sizeof(char) * (i + sign + 1));
 	if (s == NULL)
@@ -46,7 +47,7 @@ char	*ft_itoa(int n)
 		s[0] = '-';
 	while (d > 0)
 	{
-		s[sign++] = (num % (d * 10) / 10) + 48;
+		s[sign++] = ((num % (d * 10)) / d) + 48;
 		d /= 10;
 	}
 	s[sign] = '\0';

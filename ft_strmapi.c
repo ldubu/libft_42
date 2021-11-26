@@ -23,7 +23,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	scpy = (char *) malloc(sizeof(char) * (size +1));
 	if (scpy == NULL)
 		return (NULL);
-	while (*s)
+	while (s[i])
 	{
 		scpy[i] = f(i, s[i]);
 		i++;

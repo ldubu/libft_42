@@ -27,11 +27,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		i;
 
 	i = 0;
-	size = ft_strlen(s1);
+	size = ft_strlen(s1) - 1;
 	while (size > 0 && ft_isin(s1[size], set))
 		size--;
-	while (*s1 && size > 0 && ft_isin(*s1, set))
+	while (*s1 && size > 0 && ft_isin(*s1++, set))
 		size--;
+	//printf("%d", size);
 	new_s = (char *) malloc(sizeof(char) * (size + 1));
 	if (new_s == NULL)
 		return (NULL);
