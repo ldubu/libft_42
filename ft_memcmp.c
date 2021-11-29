@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldubuche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:37:02 by ldubuche          #+#    #+#             */
-/*   Updated: 2021/11/23 10:37:21 by ldubuche         ###   ########.fr       */
+/*   Updated: 2021/11/23 12:43:48 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int		len;
-	int		i;
-	char	*cpy;
+	unsigned char	*cps1;
+	unsigned char	*cps2;
 
-	len = strlen(s1);
-	cpy = NULL;
-	cpy = (char *) malloc(sizeof(char) * (len + 1));
-	if (cpy == NULL)
-		return (NULL);
-	i = 0;
-	while (len-- > 0)
-		cpy[i++] = *s1++;
-	cpy[i] = '\0';
-	return (cpy);
+	cps1 = (unsigned char *) s1;
+	cps2 = (unsigned char *) s2;
+	while (n-- > 0)
+	{
+		if (*cps1++ != *cps2++)
+			return (*cps1 - *cps2);
+	}
+	return (0);
 }
