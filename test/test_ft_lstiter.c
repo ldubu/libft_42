@@ -10,28 +10,50 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	f1(void *elem)
 {
-	unsigned char	*c1;
-	unsigned char	*c2;
+	printf("modif de la list");
+	elem = (void *) 1;
+}
 
-	c1 = (unsigned char *) s1;
-	c2 = (unsigned char *) s2;
-	if (n == 0)
-		return (0);
-	while (*c2 && *c1 && n-- > 1)
+int main(void)
+{
+	t_list	*elem1;
+	t_list	*elem2;
+	t_list	*elem3;
+	t_list	**prems;
+
+	elem1 = NULL;
+	elem2 = NULL;
+	elem3 = NULL;
+
+	elem1 = (t_list*) malloc(sizeof(t_list));
+	elem2 = (t_list*) malloc(sizeof(t_list));
+	elem3 = (t_list*) malloc(sizeof(t_list));
+
+	if (elem1 == NULL || elem2 == NULL|| elem3 == NULL)
 	{
-		if (*c1 != *c2)
-		{
-			return (*c1 - *c2);
-		}
-		c1++;
-		c2++;
+		printf("error");
+		exit(0);
 	}
-	if (n == 0)
-		return (0);
-	else
-		return (*c1 - *c2);
+	prems = &elem1;
+	elem1->content = (void *) 5;
+	elem2->content = (void *) 6;
+	elem3->content = (void *) 7;
+	
+	elem1->next = elem2;
+	elem2->next = elem3;
+	elem3->next = NULL;
+	
+	ft_lstiter(*prems, f1);
+
+	while ((*prems)->next != NULL)
+	{
+		printf("\n %d", (int) (*prems)->content);
+		*prems = (*prems)->next;
+	}
+	printf("\n %d", (int) (*prems)->content);
+	return(0);
 }

@@ -22,9 +22,12 @@ int	ft_atoi(const char *str)
 	while (*str == ' ' || *str == '\f' || *str == '\n' || *str == '\r'
 		|| *str == '\t' || *str == '\v')
 		str++;
-	while (*str == '-' || *str == '+')
-		if (*str++ == '-')
-			sign = sign * -1;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
 	while (*str >= '0' && *str <= '9')
 	{
 		num = num * 10 + *str - 48;

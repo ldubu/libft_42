@@ -18,17 +18,20 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	int	j;
 
 	i = 0;
-	while (i < (int) len)
+	if (!needle[0])
+		return ((char *) haystack);
+	while (i < (int) len && haystack [i])
 	{
 		j = 0;
 		if (haystack[i] == needle[0])
 		{
-			while (needle[j] && needle[j] == haystack[i + j])
+			while (needle[j] && haystack[i + j] && needle[j] == haystack[i + j]
+				&& i + j < (int) len)
 				j++;
 			if (needle[j] == '\0')
 				return ((char *) haystack + i);
 		}
 		i++;
 	}
-	return ((char *) haystack);
+	return (NULL);
 }
