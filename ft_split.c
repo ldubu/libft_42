@@ -40,7 +40,7 @@ static char	*ft_wordalloc(char *s, char c)
 	while (s[num_c] && s[num_c] != c)
 		num_c++;
 	word = (char *) malloc(sizeof(char) * num_c);
-	if (word == NULL)
+	if (!word)
 		return (NULL);
 	num_c = 0;
 	while (*s && *s != c)
@@ -56,7 +56,7 @@ char	**ft_split(char *s, char c)
 
 	i = 0;
 	tab = (char **) malloc(sizeof(char *) * (ft_wordnumber(s, c) + 1));
-	if (tab == NULL)
+	if (!tab)
 		return (NULL);
 	while (*s)
 	{

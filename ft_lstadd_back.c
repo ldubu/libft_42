@@ -18,6 +18,8 @@ void	ft_lstadd_back(t_list **alst, t_list *new)
 
 	temp = NULL;
 	temp = (t_list *) ft_lstlast(*alst);
-	temp->next = new;
-	new->next = NULL;
+	if (temp)
+		temp->next = new;
+	else
+		*alst = new;
 }

@@ -21,7 +21,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	size = ft_strlen(s);
 	scpy = (char *) malloc(sizeof(char) * (size +1));
-	if (scpy == NULL)
+	if (!scpy)
 		return (NULL);
 	while (s[i])
 	{
