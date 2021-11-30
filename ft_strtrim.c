@@ -28,15 +28,16 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	size = ft_strlen(s1);
-	new_s = (char *) malloc(sizeof(char) * (size + 1));
-	if (new_s == NULL)
-		return (NULL);
-	size --;
+	size--;
 	while (size > 0 && ft_isin(s1[size], set))
 		size--;
 	while (*s1 && size > 0 && ft_isin(*s1++, set))
 		size--;
-	
+	size++;
+	new_s = (char *) malloc(sizeof(char) * (size + 1));
+	if (!new_s)
+		return (NULL);
+	s1--;
 	while (size-- > 0)
 		new_s[i++] = *s1++;
 	new_s[i] = '\0';

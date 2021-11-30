@@ -15,7 +15,7 @@
 int	ft_atoi(const char *str)
 {
 	unsigned int	num;
-	int	sign;
+	int				sign;
 
 	sign = 1;
 	num = 0;
@@ -28,7 +28,7 @@ int	ft_atoi(const char *str)
 			sign = -1;
 		str++;
 	}
-	while (*str >= '0' && *str <= '9' && num >= -247483648 && num <= 247483647)
+	while (*str >= '0' && *str <= '9')
 	{
 		num = num * 10 + *str - 48;
 		str++;

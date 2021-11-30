@@ -5,3 +5,5 @@ libft.a
 .vsc*
 test_warmachine
 result.log
+libtf-war-machine
+test/Makefile
