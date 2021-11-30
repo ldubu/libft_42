@@ -40,7 +40,7 @@ char	*ft_itoa(int n)
 	else
 		num = n;
 	d = ft_charnum(num, &i);
-	s = (char *) malloc(sizeof(char) * (i + sign + 1));
+	s = (char *) malloc(sizeof(char) * (i + sign + 2 ));
 	if (s == NULL)
 		return (s);
 	if (sign == 1)
