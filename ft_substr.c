@@ -16,8 +16,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*new_s;
 	size_t	i;
+	size_t	size;
 
-	if (ft_strlen(s) < start)
+	size = ft_strlen(s);
+	if (size < start)
 	{
 		new_s = (char *) malloc(sizeof(char));
 		if (!new_s)
@@ -25,19 +27,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		new_s[0] = '\0';
 		return (new_s);
 	}
-	new_s = malloc(sizeof(char) * (len + 1));
+	new_s = malloc(sizeof(char) * (size - start + 1));
 	if (!new_s)
 		return (NULL);
 	i = 0;
-	while (*s && len-- > 0)
+	while (s[start] && len-- > 0)
 		new_s[i++] = s[start++];
 	new_s[i] = '\0';
 	return (new_s);
-}
-
-int main(void)
-{
-	char *s = ft_substr("tripouille", 0, 42000);
-	printf("tripouille");
-	return(0);
 }
