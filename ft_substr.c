@@ -29,8 +29,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!new_s)
 		return (NULL);
 	i = 0;
-	while (len-- > 0)
+	while (*s && len-- > 0)
 		new_s[i++] = s[start++];
 	new_s[i] = '\0';
 	return (new_s);
+}
+
+int main(void)
+{
+	char *s = ft_substr("tripouille", 0, 42000);
+	printf("tripouille");
+	return(0);
 }

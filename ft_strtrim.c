@@ -31,9 +31,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size--;
 	while (size > 0 && ft_isin(s1[size], set))
 		size--;
+	size++;
 	while (*s1 && size > 0 && ft_isin(*s1++, set))
 		size--;
-	size++;
 	new_s = (char *) malloc(sizeof(char) * (size + 1));
 	if (!new_s)
 		return (NULL);

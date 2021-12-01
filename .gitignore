@@ -7,3 +7,6 @@ test_warmachine
 result.log
 libtf-war-machine
 test/Makefile
+test-war-machine
+libftTester
+test_libft
