@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldubuche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:20:54 by ldubuche          #+#    #+#             */
-/*   Updated: 2021/11/23 18:31:22 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/01/08 12:17:43 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ char	*ft_strrchr(const char *s, int c)
 	if (a == '\0')
 		return ((char *)s + b);
 	while (--b >= 0)
-		if (s[b] == a)
-			return ((char *)s + b);
+	{
+		if (*s == a)
+			return ((char *)s);
+		s++;
+	}
 	return (NULL);
 }
