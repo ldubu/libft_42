@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 18:20:54 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/17 14:27:39 by ldubuche         ###   ########.fr       */
+/*   Created: 2022/01/11 17:27:01 by ldubuche          #+#    #+#             */
+/*   Updated: 2022/01/13 10:45:19 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_printf.h"
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	a;
-	int		b;
+	unsigned char	*c1;
+	unsigned char	*c2;
 
-	a = (char) c;
-	b = 0;
-	while (s[b])
-		b++;
-	if (a == '\0')
-		return ((char *) s + b);
-	while (--b >= 0)
+	c1 = (unsigned char *) s1;
+	c2 = (unsigned char *) s2;
+	if (n == 0)
+		return (0);
+	while (*c2 && *c1 && n > 0)
 	{
-		if (*s == a)
-			return ((char *) s);
-		s++;
+		if (*c1 != *c2)
+		{
+			return (*c1 - *c2);
+		}
+		c1++;
+		c2++;
+		n--;
 	}
-	return (NULL);
+	if (n == 0)
+		return (0);
+	else
+		return (*c1 - *c2);
 }

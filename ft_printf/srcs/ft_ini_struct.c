@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_ini_struct.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 18:20:54 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/17 14:27:39 by ldubuche         ###   ########.fr       */
+/*   Created: 2022/01/05 15:52:26 by ldubuche          #+#    #+#             */
+/*   Updated: 2022/01/17 09:51:21 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_printf.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_ini_struct(t_struct *f1)
 {
-	char	a;
-	int		b;
-
-	a = (char) c;
-	b = 0;
-	while (s[b])
-		b++;
-	if (a == '\0')
-		return ((char *) s + b);
-	while (--b >= 0)
-	{
-		if (*s == a)
-			return ((char *) s);
-		s++;
-	}
-	return (NULL);
+	f1->minus_fla = 0;
+	f1->plus_fla = 0;
+	f1->space_fla = 0;
+	f1->diese_fla = 0;
+	f1->zero_fla = 0;
+	f1->width = 0;
+	f1->pre = -1;
+	f1->types = '0';
+	f1->size = 0;
+	f1->len = 0;
+	f1->i = 0;
+	f1->null = 0;
+	f1->is_zero = 0;
 }

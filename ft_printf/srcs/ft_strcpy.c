@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 18:20:54 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/17 14:27:39 by ldubuche         ###   ########.fr       */
+/*   Created: 2022/01/06 10:14:10 by ldubuche          #+#    #+#             */
+/*   Updated: 2022/01/11 17:21:20 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_printf.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strcpy(const char *src, size_t dstsize)
 {
-	char	a;
-	int		b;
+	char	*dst;
+	int		i;
 
-	a = (char) c;
-	b = 0;
-	while (s[b])
-		b++;
-	if (a == '\0')
-		return ((char *) s + b);
-	while (--b >= 0)
+	if (src == NULL)
+		return (NULL);
+	dst = (char *) malloc(sizeof(char) * dstsize + 1);
+	i = 0;
+	while (src[i] != '\0')
 	{
-		if (*s == a)
-			return ((char *) s);
-		s++;
+		dst[i] = src[i];
+		i++;
 	}
-	return (NULL);
+	dst[i] = '\0';
+	return (dst);
 }

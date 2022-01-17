@@ -39,39 +39,45 @@ SRC =		ft_bzero.c\
 			ft_putstr_fd.c\
 			ft_putendl_fd.c\
 			ft_putnbr_fd.c\
-			ft_memcmp.c
+			ft_memcmp.c \
+			get_next_line.c		
 
-SRCB =		ft_lstadd_back.c\
-			ft_lstadd_front.c\
-			ft_lstclear.c\
-			ft_lstdelone.c\
-			ft_lstiter.c\
-			ft_lstlast.c\
-			ft_lstmap.c\
-			ft_lstnew.c\
-			ft_lstsize.c\
+LIST =		list/ft_lstadd_back.c\
+			list/ft_lstadd_front.c\
+			list/ft_lstclear.c\
+			list/ft_lstdelone.c\
+			list/ft_lstiter.c\
+			list/ft_lstlast.c\
+			list/ft_lstmap.c\
+			list/ft_lstnew.c\
+			list/ft_lstsize.c\
 
 OBJ =		$(SRC:.c=.o)
 
-OBJB =		$(SRCB:.c=.o)
+OBJL =		$(LIST:.c=.o)
 
-.c.o:
-			@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+.c.o:	libft.h list/list.h
+	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 			
 $(NAME): 	$(OBJ)
-			@ar rc $(NAME) $(OBJ)
+	@ar rc $(NAME) $(OBJ)
 
-bonus:		$(OBJ) $(OBJB)
-			@ar rc $(NAME) $(OBJ) $(OBJB)
+list:		$(OBJ) $(OBJL)
+	@ar rc $(NAME) $(OBJ) $(OBJL)
 
-all: 		$(NAME)
+all: $(NAME) list printf
+
+printf:
+		make -C ft_printf/
 
 clean:
-			@$(RM) $(OBJ) $(OBJB)
+	@$(RM) $(OBJ) $(OBJB)
+	@make clean -C ft_printf/
 
 fclean:		clean
-			@$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@make fclean -C ft_printf/ 
 
-re: 		fclean all
+re: 	fclean all
 
-.PHONY: 	clean fclean
+.PHONY: 	clean fclean re list all
