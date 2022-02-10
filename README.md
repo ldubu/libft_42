@@ -1,5 +1,5 @@
 # libft_42
+Un projet de l'ecole 42 dont le but et de creer sa propre librairie de fonction.
+Je le mettrais a jour avec mon avance dans le cursus.
 
-La libft est un projet de l,ecole 42 qui vise a code sa propre librairie de fonction.
-J'ai passe valide mon projet libft et je continue a le mettre a jour avec les fonctions que l'on est amene a code dans la suite du cursus.
-Actuellement, il y a en plus get_next_line et ft_printf.
+- Le dossier list contient les fonctions pour la gestion de listes chainees
