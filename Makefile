@@ -40,7 +40,8 @@ SRC =		ft_bzero.c\
 			ft_putendl_fd.c\
 			ft_putnbr_fd.c\
 			ft_memcmp.c \
-			get_next_line.c		
+			get_next_line.c	\
+			free_str.c	
 
 LIST =		list/ft_lstadd_back.c\
 			list/ft_lstadd_front.c\
@@ -62,7 +63,6 @@ OBJL =		$(LIST:.c=.o)
 $(NAME): 	$(OBJ) $(OBJL)
 	@make -C ft_printf/
 	@cp ft_printf/libftprintf.a ./
-	@ar rc $(NAME) $(OBJ) libftprintf.a
 	@ar rc $(NAME) $(OBJ) $(OBJL) libftprintf.a
 	
 all: $(NAME) list printf
