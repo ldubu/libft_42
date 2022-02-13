@@ -6,7 +6,7 @@
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:37:02 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/17 14:43:28 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/02/08 13:28:00 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
-# include "list.h"
+# include "list/list.h"
+# include "ft_printf/includes/ft_printf.h"
 
 # ifndef FD_MAX
 #  define FD_MAX 256

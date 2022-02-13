@@ -60,24 +60,20 @@ OBJL =		$(LIST:.c=.o)
 .c.o:	libft.h list/list.h
 	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 			
-$(NAME): 	$(OBJ)
-	@ar rc $(NAME) $(OBJ)
-
-list:		$(OBJ) $(OBJL)
-	@ar rc $(NAME) $(OBJ) $(OBJL)
-
+$(NAME): 	$(OBJ) $(OBJL)
+	@make -C ft_printf/
+	@cp ft_printf/libftprintf.a ./
+	@ar rc $(NAME) $(OBJ) $(OBJL) libftprintf.a
+	
 all: $(NAME) list printf
 
-printf:
-		make -C ft_printf/
-
 clean:
-	@$(RM) $(OBJ) $(OBJB)
+	@$(RM) $(OBJ) $(OBJL)
 	@make clean -C ft_printf/
 
 fclean:		clean
-	@$(RM) $(NAME)
-	@make fclean -C ft_printf/ 
+	@$(RM) $(NAME) libftprintf.a
+	@make fclean -C ft_printf/
 
 re: 	fclean all
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/08 13:00:34 by ldubuche          #+#    #+#             */
+/*   Updated: 2022/02/08 13:00:34 by ldubuche         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIST_H
 # define LIST_H
 
@@ -18,3 +30,5 @@ void	ft_lstadd_front(t_list	**alst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstadd_back(t_list **alst, t_list *new);
+
+#endif
