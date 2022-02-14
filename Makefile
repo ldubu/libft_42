@@ -1,3 +1,5 @@
+MAKEFLAGS = --silent
+
 CC = 		gcc
 
 CFLAGS =	-Wall -Werror -Wextra
@@ -80,8 +82,8 @@ $(NAME): 	$(OBJ) $(OBJL) $(HEADER)
 	@make -C ft_printf_42/
 	@cp ft_printf_42/libftprintf.a ./
 	@mv libftprintf.a libft.a
-	@ar rc $(NAME) $(OBJ) $(OBJL) libftprintf.a
-	@printf "\n${_GREEN}${_BOLD}Compilation done !${_END}\n"
+	@ar rc $(NAME) $(OBJ) $(OBJL)
+	@printf "\n${_GREEN}${_BOLD}[Libft OK]${_END}\n"
 	
 all: $(NAME)
 
@@ -95,4 +97,4 @@ fclean:		clean
 
 re: 	fclean all
 
-.PHONY: 	clean fclean re list all
+.PHONY: 	clean fclean re all
