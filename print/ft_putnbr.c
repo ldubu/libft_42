@@ -6,9 +6,12 @@
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:29:28 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/02/14 14:30:00 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/02/14 16:11:24 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
+#include "libft.h"
 
 void	__putnbr(int n)
 {

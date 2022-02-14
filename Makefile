@@ -73,14 +73,14 @@ LIST =		list/ft_lstadd_back.c\
 			list/ft_lstnew.c\
 			list/ft_lstsize.c\
 
-OBJ =		$(SRC:.c=.o)
+OBJ = $(addprefix $(OBJS_PATH), $(SRC:.c=.o))
+OBJL = $(addprefix $(OBJS_PATH), $(LIST:.c=.o))
 
-OBJL =		$(LIST:.c=.o)
+$(OBJS_PATH)%.o: %.c $(HEADER)
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@printf "%-15s ${_YELLOW}${_BOLD}$<${_END}...\n" "Compiling"			
 
-.c.o:	$(HEADER)
-	@${CC} ${CFLAGS} ${IFLAGS} -c $< -o ${<:.c=.o}
-	@printf "%-15s ${_YELLOW}${_BOLD}$<${_END}...\n" "Compiling"
-			
 $(NAME): 	$(OBJ) $(OBJL) $(HEADER)
 	@printf "%-15s ${_PURPLE}${_BOLD}${NAME}${_END}...\n" "Compiling"
 	@make -C ft_printf_42/
@@ -96,7 +96,7 @@ clean:
 	@make clean -C ft_printf_42/
 
 fclean:		clean
-	@$(RM) $(NAME) libftprintf.a
+	@$(RM) $(NAME) $(OBJS_PATH) libftprintf.a
 	@make fclean -C ft_printf_42/
 
 re: 	fclean all
