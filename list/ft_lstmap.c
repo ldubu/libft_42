@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   __lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,24 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*__lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_l;
 	t_list	*first;
 
-	new_l = ft_lstnew(f(lst->content));
+	new_l = __lstnew(f(lst->content));
 	if (!new_l)
 		return (NULL);
 	first = new_l;
 	lst = lst->next;
 	while (lst)
 	{
-		new_l->next = ft_lstnew(f(lst->content));
+		new_l->next = __lstnew(f(lst->content));
 		if (!new_l)
 		{
-			ft_lstclear(&first, del);
+			__lstclear(&first, del);
 			return (NULL);
 		}
 		new_l = new_l->next;

@@ -2,20 +2,37 @@ CC = 		gcc
 
 CFLAGS =	-Wall -Werror -Wextra
 
+IFLAGS = 	-I includes
+
 NAME = 		libft.a
 
 RM =		rm -rf
 
+HEADER = 	includes/libft.h includes/list.h
+
+_GREY=	$'\033[30m
+_RED=	$'\033[31m
+_GREEN=	$'\033[32m
+_YELLOW=$'\033[33m
+_BLUE=	$'\033[34m
+_PURPLE=$'\033[35m
+_CYAN=	$'\033[36m
+_WHITE=	$'\033[37m
+_END= 	$'\033[37m
+
 SRC =		mem/ft_bzero.c\
+			mem/ft_memset.c\
+			mem/ft_memcpy.c\
+			mem/ft_memmove.c\
+			mem/ft_memchr.c\
+			mem/ft_calloc.c\
+			mem/ft_memcmp.c \
 			str/ft_isalnum.c\
 			str/ft_isalpha.c\
 			str/ft_isascii.c\
 			str/ft_isdigit.c\
 			str/ft_isprint.c\
-			mem/ft_memset.c\
 			str/ft_strlen.c\
-			mem/ft_memcpy.c\
-			mem/ft_memmove.c\
 			str/ft_strlcpy.c\
 			str/ft_strlcat.c\
 			str/ft_toupper.c\
@@ -23,10 +40,8 @@ SRC =		mem/ft_bzero.c\
 			str/ft_strchr.c\
 			str/ft_strrchr.c\
 			str/ft_strncmp.c\
-			mem/ft_memchr.c\
 			str/ft_strnstr.c\
 			str/ft_atoi.c\
-			mem/ft_calloc.c\
 			str/ft_strdup.c\
 			str/ft_substr.c\
 			str/ft_strjoin.c\
@@ -39,7 +54,6 @@ SRC =		mem/ft_bzero.c\
 			print/ft_putstr_fd.c\
 			print/ft_putendl_fd.c\
 			print/ft_putnbr_fd.c\
-			mem/ft_memcmp.c \
 			gnl/get_next_line.c \
 			gnl/free_str.c
 
@@ -57,23 +71,27 @@ OBJ =		$(SRC:.c=.o)
 
 OBJL =		$(LIST:.c=.o)
 
-.c.o:	libft.h list/list.h
-	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+.c.o:	$(HEADER)
+	@${CC} ${CFLAGS} ${IFLAGS} -c $< -o ${<:.c=.o}
+	@printf "%-15s ${_YELLOW}${_BOLD}$<${_END}...\n" "Compiling"
 			
-$(NAME): 	$(OBJ) $(OBJL)
-	@make -C ft_printf/
-	@cp ft_printf/libftprintf.a ./
+$(NAME): 	$(OBJ) $(OBJL) $(HEADER)
+	@printf "%-15s ${_PURPLE}${_BOLD}${NAME}${_END}...\n" "Compiling"
+	@make -C ft_printf_42/
+	@cp ft_printf_42/libftprintf.a ./
+	@mv libftprintf.a libft.a
 	@ar rc $(NAME) $(OBJ) $(OBJL) libftprintf.a
+	@printf "\n${_GREEN}${_BOLD}Compilation done !${_END}\n"
 	
-all: $(NAME) list printf
+all: $(NAME)
 
 clean:
 	@$(RM) $(OBJ) $(OBJL)
-	@make clean -C ft_printf/
+	@make clean -C ft_printf_42/
 
 fclean:		clean
 	@$(RM) $(NAME) libftprintf.a
-	@make fclean -C ft_printf/
+	@make fclean -C ft_printf_42/
 
 re: 	fclean all
 

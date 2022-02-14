@@ -1,3 +1,6 @@
 [submodule "ft_printf"]
 	path = ft_printf
 	url = https://github.com/ldubu/ft_printf_42
+[submodule "ft_printf_42"]
+	path = ft_printf_42
+	url = https://github.com/ldubu/ft_printf_42.git

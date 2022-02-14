@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldubuche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:37:02 by ldubuche          #+#    #+#             */
-/*   Updated: 2021/11/23 10:37:21 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/02/14 10:37:37 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	__strncmp(const char *s1, const char *s2, size_t n)
 {
 	unsigned char	*c1;
 	unsigned char	*c2;

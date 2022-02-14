@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*get_next_line(int fd)
+char	*__get_next_line(int fd)
 {
 	static char	*buffer = NULL;
 	char		*current_read;
@@ -25,84 +25,84 @@ char	*get_next_line(int fd)
 		return (NULL);
 	len = read(fd, current_read, BUFFER_SIZE);
 	if (len < 0)
-		return (free_str(current_read));
+		return (__free_str(current_read));
 	current_read[len] = '\0';
 	if (len > 0)
 	{
-		buffer = fill_buffer(current_read, buffer, fd);
+		buffer = __fill_buffer(current_read, buffer, fd);
 		if (buffer == NULL)
-			return (free_str(current_read));
+			return (__free_str(current_read));
 	}
 	else if (len == 0 && (!buffer || buffer[0] == '\0'))
 	{
-		free_str(buffer);
-		return (free_str(current_read));
+		__free_str(buffer);
+		return (__free_str(current_read));
 	}
-	return (r_value(&buffer, current_read));
+	return (__r_value(&buffer, current_read));
 }
 
-char	*fill_buffer(char *current_read, char *buffer, int fd)
+char	*____fill_buffer(char *current_read, char *buffer, int fd)
 {
 	int		len;
 
 	len = 1;
 	if (!buffer)
 	{
-		buffer = ft_strdup("");
+		buffer = __strdup("");
 		if (!buffer)
-			return (free_str(buffer));
+			return (__free_str(buffer));
 	}
-	buffer = ft_buffjoin(buffer, current_read, buffer);
+	buffer = __buffjoin(buffer, current_read, buffer);
 	if (!buffer)
 		return (NULL);
-	while (ft_strrchr(buffer, '\n') == NULL && len != 0)
+	while (__strrchr(buffer, '\n') == NULL && len != 0)
 	{
 		len = read(fd, current_read, BUFFER_SIZE);
 		if (len < 0)
 			return (NULL);
 		current_read[len] = '\0';
-		buffer = ft_buffjoin(buffer, current_read, buffer);
+		buffer = __buffjoin(buffer, current_read, buffer);
 		if (!buffer)
 			return (NULL);
 	}
 	return (buffer);
 }
 
-char	*r_value(char **buffer, char *current_read)
+char	*__r_value(char **buffer, char *current_read)
 {
 	int		len;
 	char	*retour;
 	char	*nl_position;
 
-	free_str(current_read);
-	nl_position = ft_strrchr(*buffer, '\n');
+	__free_str(current_read);
+	nl_position = __strrchr(*buffer, '\n');
 	if (nl_position)
 		len = nl_position - *buffer + 1;
 	else
-		len = ft_strlen(*buffer);
+		len = __strlen(*buffer);
 	retour = (char *) malloc(sizeof(char) * len + 1);
 	if (!retour)
-		return (free_str(*buffer));
-	fill_retour(buffer, len, retour);
+		return (__free_str(*buffer));
+	__fill_retour(buffer, len, retour);
 	if (nl_position)
-		*buffer = ft_buffjoin("", nl_position + 1, *buffer);
+		*buffer = __buffjoin("", nl_position + 1, *buffer);
 	else
-		*buffer = ft_buffjoin("", *buffer + len, *buffer);
+		*buffer = __buffjoin("", *buffer + len, *buffer);
 	if (!(*buffer))
-		return (free_str(*buffer));
+		return (__free_str(*buffer));
 	return (retour);
 }
 
-char	*ft_buffjoin(char *buffer, char *str, char *to_free)
+char	*__buffjoin(char *buffer, char *str, char *to_free)
 {
-	buffer = ft_strjoin(buffer, str);
+	buffer = __strjoin(buffer, str);
 	if (!buffer)
 		return (NULL);
 	free(to_free);
 	return (buffer);
 }
 
-void	fill_retour(char **buffer, int len, char *retour)
+void	__fill_retour(char **buffer, int len, char *retour)
 {
 	int	i;
 

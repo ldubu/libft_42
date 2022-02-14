@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldubuche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:37:02 by ldubuche          #+#    #+#             */
-/*   Updated: 2021/11/23 11:26:50 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/02/14 10:37:37 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*__strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*scpy;
 	int		size;
 	int		i;
 
 	i = 0;
-	size = ft_strlen(s);
+	size = __strlen(s);
 	scpy = (char *) malloc(sizeof(char) * (size +1));
 	if (!scpy)
 		return (NULL);

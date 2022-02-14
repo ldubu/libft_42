@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldubuche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:37:02 by ldubuche          #+#    #+#             */
-/*   Updated: 2021/11/23 11:26:50 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/02/14 10:42:08 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static long long	ft_charnum(unsigned int n, int *i)
+static long long	__charnum(unsigned int n, int *i)
 {
 	long long	d;
 
@@ -25,7 +25,7 @@ static long long	ft_charnum(unsigned int n, int *i)
 	return (d);
 }
 
-char	*ft_itoa(int n)
+char	*__itoa(int n)
 {
 	int				i;
 	long long		d;
@@ -39,7 +39,7 @@ char	*ft_itoa(int n)
 		num = -n;
 	else
 		num = n;
-	d = ft_charnum(num, &i);
+	d = __charnum(num, &i);
 	s = (char *) malloc(sizeof(char) * (i + sign + 2));
 	if (s == NULL)
 		return (s);

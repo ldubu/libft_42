@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldubuche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:37:02 by ldubuche          #+#    #+#             */
-/*   Updated: 2021/11/23 11:26:50 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/02/14 10:37:35 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_wordnumber(char *s, char c)
+static int	__wordnumber(char *s, char c)
 {
 	int	words;
 
@@ -31,7 +31,7 @@ static int	ft_wordnumber(char *s, char c)
 	return (words);
 }
 
-static char	*ft_free_tab(char **tab, int i)
+static char	*__free_tab(char **tab, int i)
 {
 	int	j;
 
@@ -42,7 +42,7 @@ static char	*ft_free_tab(char **tab, int i)
 	return (NULL);
 }
 
-static char	*ft_wordalloc(char *s, char c, char **tab, int i)
+static char	*__wordalloc(char *s, char c, char **tab, int i)
 {
 	char	*word;
 	int		num_c;
@@ -53,7 +53,7 @@ static char	*ft_wordalloc(char *s, char c, char **tab, int i)
 	word = (char *) malloc(sizeof(char) * num_c + 1);
 	if (!word)
 	{
-		ft_free_tab(tab, i);
+		__free_tab(tab, i);
 		return (NULL);
 	}
 	num_c = 0;
@@ -63,13 +63,13 @@ static char	*ft_wordalloc(char *s, char c, char **tab, int i)
 	return (word);
 }
 
-char	**ft_split(char *s, char c)
+char	**__split(char *s, char c)
 {
 	char	**tab;
 	int		i;
 
 	i = 0;
-	tab = (char **) malloc(sizeof(char *) * (ft_wordnumber(s, c) + 1));
+	tab = (char **) malloc(sizeof(char *) * (__wordnumber(s, c) + 1));
 	if (!tab)
 		return (NULL);
 	while (*s)
@@ -78,7 +78,7 @@ char	**ft_split(char *s, char c)
 			s++;
 		if (*s && *s != c)
 		{
-			tab[i] = ft_wordalloc(s, c, tab, i);
+			tab[i] = __wordalloc(s, c, tab, i);
 			if (!tab[i++])
 				return (NULL);
 		}

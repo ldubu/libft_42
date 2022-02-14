@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldubuche <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:37:02 by ldubuche          #+#    #+#             */
-/*   Updated: 2021/11/23 11:26:50 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/02/14 10:37:38 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_isin(char c, const char *set)
+static int	__isin(char c, const char *set)
 {
 	while (*set)
 		if (*set++ == c)
@@ -20,19 +20,19 @@ static int	ft_isin(char c, const char *set)
 	return (0);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*__strtrim(char const *s1, char const *set)
 {
 	char	*new_s;
 	int		size;
 	int		i;
 
 	i = 0;
-	size = ft_strlen(s1);
+	size = __strlen(s1);
 	size--;
-	while (size > 0 && ft_isin(s1[size], set))
+	while (size > 0 && __isin(s1[size], set))
 		size--;
 	size++;
-	while (*s1 && size > 0 && ft_isin(*s1++, set))
+	while (*s1 && size > 0 && __isin(*s1++, set))
 		size--;
 	new_s = (char *) malloc(sizeof(char) * (size + 1));
 	if (!new_s)
