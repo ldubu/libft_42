@@ -56,6 +56,10 @@ SRC =		mem/ft_bzero.c\
 			print/ft_putstr_fd.c\
 			print/ft_putendl_fd.c\
 			print/ft_putnbr_fd.c\
+			print/ft_putchar.c\
+			print/ft_putstr.c\
+			print/ft_putendl.c\
+			print/ft_putnbr.c\
 			gnl/get_next_line.c \
 			gnl/free_str.c
 

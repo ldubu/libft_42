@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 10:37:02 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/02/14 14:35:32 by ldubuche         ###   ########.fr       */
+/*   Created: 2022/02/14 14:28:51 by ldubuche          #+#    #+#             */
+/*   Updated: 2022/02/14 14:29:11 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*__memset(void *b, int c, size_t len)
+void	__putstr(char *s)
 {
-	unsigned char	*cb;
-
-	cb = (unsigned char *) b;
-	while (len-- > 0)
-		*cb++ = (unsigned char) c;
-	return (b);
+	while (*s)
+		__putchar(*s++);
 }

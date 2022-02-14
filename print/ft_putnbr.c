@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 10:37:02 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/02/14 14:35:32 by ldubuche         ###   ########.fr       */
+/*   Created: 2022/02/14 14:29:28 by ldubuche          #+#    #+#             */
+/*   Updated: 2022/02/14 14:30:00 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*__memset(void *b, int c, size_t len)
+void	__putnbr(int n)
 {
-	unsigned char	*cb;
+	unsigned int	num;
 
-	cb = (unsigned char *) b;
-	while (len-- > 0)
-		*cb++ = (unsigned char) c;
-	return (b);
+	if (n < 0)
+	{
+		__putchar('-');
+		num = -n;
+	}
+	else
+		num = n;
+	if (num > 9)
+		__putnbr(num / 10);
+	__putchar((num % 10 + 48));
 }
