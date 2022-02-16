@@ -41,7 +41,7 @@ char	*__get_next_line(int fd)
 	return (__r_value(&buffer, current_read));
 }
 
-char	*____fill_buffer(char *current_read, char *buffer, int fd)
+char	*__fill_buffer(char *current_read, char *buffer, int fd)
 {
 	int		len;
 
