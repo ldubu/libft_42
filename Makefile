@@ -12,6 +12,8 @@ RM =		rm -rf
 
 HEADER = 	includes/libft.h includes/list.h
 
+OBJS_PATH = objs/
+
 _GREY=	$'\033[30m
 _RED=	$'\033[31m
 _GREEN=	$'\033[32m
